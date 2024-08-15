@@ -19,17 +19,27 @@ public class ctrlProductos implements MouseListener {
         this.modelo = Modelo;
         
         Vista.btnInsertar.addMouseListener(this);
+        
+        //Para mostrar los datos
+        Vista.jtbProductos.addMouseListener(this);
+        modelo.Mostrar(Vista.jtbProductos);
+        
        
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+        
         if(e.getSource() == Vista.btnInsertar){
+            System.err.println("le di clic al boton");
+                    
             modelo.setNombre(Vista.txtNombre.getText());
             modelo.setPrecio(Double.parseDouble(Vista.txtPrecio.getText()));
             modelo.setCategoria(Vista.txtCategoria.getText());
             
             modelo.Guardar();
+            modelo.Mostrar(Vista.jtbProductos);
             
         }
     }
